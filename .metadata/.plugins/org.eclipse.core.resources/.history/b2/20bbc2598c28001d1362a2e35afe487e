@@ -1,0 +1,36 @@
+package ar.unlam.edu.pb2;
+
+public class Cerradura {
+	private Integer claveDeApertura;
+	private Integer cantidadDeFallosConsecutivosQueLaBloquean;
+	private boolean estaAbierta = false;
+	private Integer intentosFallidos;
+	
+	Cerradura (){
+		this.claveDeApertura = 131677;
+	}
+	
+	public Cerradura (Integer claveDeApertura, Integer cantidadDeFallosConsecutivosQueLaBloquean){
+		this.claveDeApertura = claveDeApertura;
+		this.cantidadDeFallosConsecutivosQueLaBloquean = cantidadDeFallosConsecutivosQueLaBloquean;
+		this.intentosFallidos = 0;
+	}
+
+	public Integer getClaveDeApertura() {
+		return this.claveDeApertura;
+	}
+
+	public void setClaveDeApertura(Integer claveDeApertura) {
+		this.claveDeApertura = claveDeApertura;
+	}
+
+	public Integer getCantidadDeFallosConsecutivosQueLaBloquean() {
+		return this.cantidadDeFallosConsecutivosQueLaBloquean;
+	}
+
+	public void setCantidadDeFallosConsecutivosQueLaBloquean(Integer cantidadDeFallosConsecutivosQueLaBloquean) {
+		this.cantidadDeFallosConsecutivosQueLaBloquean = cantidadDeFallosConsecutivosQueLaBloquean;
+	}
+	
+	
+}
