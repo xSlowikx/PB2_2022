@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestControlBiometrico" project="Testing_PB2" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="ar.unlam.edu.pb2.TestControlBiometrico" time="0.001">
+    <testcase name="queExistaElSoftware" classname="ar.unlam.edu.pb2.TestControlBiometrico" time="0.001"/>
+    <testcase name="queSeRegistreUnUsuario" classname="ar.unlam.edu.pb2.TestControlBiometrico" time="0.0"/>
+    <testcase name="queSeObtengaUnUsuarioPorNumeroDeUsuario" classname="ar.unlam.edu.pb2.TestControlBiometrico" time="0.0"/>
+  </testsuite>
+</testrun>
