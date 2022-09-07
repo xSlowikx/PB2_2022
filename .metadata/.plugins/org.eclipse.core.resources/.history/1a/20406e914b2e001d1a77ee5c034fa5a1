@@ -1,0 +1,28 @@
+package ar.unlam.edu.pb2;
+
+import java.util.ArrayList;
+
+public class Secretaria {
+
+	private String nombre;
+	private ArrayList<Vivienda> viviendas;
+
+	public Secretaria(String nombreSecretaria) {
+		// TODO Auto-generated constructor stub
+		this.nombre = nombreSecretaria;
+		this.viviendas = new ArrayList<>();
+	}
+
+	public void agregarVivienda(Integer nro_lote, String calle, Integer altura, String localidad, Integer codigoPostal) {
+		// TODO Auto-generated method stub
+		Vivienda nuevaVivienda = new Vivienda (nro_lote,calle,altura,localidad,codigoPostal);
+		viviendas.add(nuevaVivienda);
+		
+	}
+
+	public void agregarHabitanteEnUnaVivienda(String string, int i, String string2, String string3, String string4) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,23 @@
+package ar.unlam.edu.pb2;
+
+import java.util.ArrayList;
+
+public class Vivienda {
+
+	private Integer nro_lote;
+	private String calle;
+	private Integer altura;
+	private String localidad;
+	private Integer codigoPostal;
+	private ArrayList<Habitante> habitantes;
+	
+
+	public Vivienda(Integer nro_lote, String calle, Integer altura, String localidad, Integer codigoPostal) {
+		// TODO Auto-generated constructor stub
+		this.nro_lote = nro_lote;
+		this.calle = calle;
+		this.altura = altura;
+		this.localidad = localidad;
+		this.codigoPostal = codigoPostal;
+	}
+}

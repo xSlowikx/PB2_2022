@@ -35,7 +35,8 @@ public class Software {
 	
 	public void registrarIngresoUsuario(Integer numeroUsuario, Integer dia, Integer mes) {
 		for(Usuario recorridoUsuario: this.usuarios) {
-			if( (recorridoUsuario.getNumeroDeUsuario().equals(numeroUsuario))) {
+			if( (recorridoUsuario.getNumeroDeUsuario().equals(numeroUsuario)) 
+					&& ) {
 				System.out.println("El usuario existe, procediendo a continuar el ingreso...");
 			}
 		}

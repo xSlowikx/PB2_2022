@@ -3,7 +3,7 @@
     <fullyQualifiedTypeName name="ar.unlam.edu.pb2.Usuario"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="ar.unlam.edu.pb2.Software"/>
     <fullyQualifiedTypeName name="ar.unlam.edu.pb2.TipoDeEmpleado"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
