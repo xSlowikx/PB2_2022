@@ -1,0 +1,27 @@
+package ar.unlam.edu.pb2;
+
+public enum ProvinciaSeleccionada {
+		TIERRA_DEL_FUEGO,
+		SANTA_CRUZ,
+		CHUBUT,
+		RIO_NEGRO,
+		MENDOZA,
+		LA_PAMPA,
+		BUENOS_AIRES,
+		SANTA_FE,
+		SANTIAGO_DEL_ESTERO,
+		SAN_JUAN,
+		CATAMARCA,
+		CORRIENTES,
+		ENTRE_RIOS,
+		MISIONES,
+		FORMOSA,
+		CHACO,
+		TUCUMAN,
+		JUJUY,
+		SALTA,
+		CORDOBA,
+		SAN_LUIS,
+		NEUQUEN,
+		LA_RIOJA,
+}

@@ -13,5 +13,5 @@ public class TestTurismo {
 		nuevaSecretaria.agregarHabitanteEnUnaVivienda(0001,"DNI",41823462,"Alejandro","Rios","29/03/1999");
 		
 	}
-
+	
 }

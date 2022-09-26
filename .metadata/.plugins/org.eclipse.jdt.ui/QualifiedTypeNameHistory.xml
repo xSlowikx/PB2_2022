@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="ar.unlam.edu.pb2.Usuario"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="ar.unlam.edu.pb2.Software"/>
     <fullyQualifiedTypeName name="ar.unlam.edu.pb2.TipoDeEmpleado"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="ar.edu.unlam.pb2.RegistroDePropiedades"/>
+    <fullyQualifiedTypeName name="ar.edu.unlam.pb2.Secretaria"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
