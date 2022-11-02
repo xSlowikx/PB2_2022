@@ -28,13 +28,10 @@ public class Ejercito {
 			throws VehiculoYaExistenteEnElConvoyException {
 		// TODO Auto-generated method stub
 //		if(listaDeVehiculos.containsKey(codigoVehiculo))
-		for (Entry<Integer, Vehiculo> listaDeVehiculos : listaDeVehiculos.entrySet()) {
-			if (listaDeVehiculos.getKey().equals(codigoVehiculo)) {
-				throw new VehiculoYaExistenteEnElConvoyException(
-						"El codigo de vehiculo ya se encuentra dentro del convoy");
-			}
-
+		if (listaDeVehiculos.containsKey(codigoVehiculo)) {
+			throw new VehiculoYaExistenteEnElConvoyException("El codigo de vehiculo ya se encuentra dentro del convoy");
 		}
+
 		listaDeVehiculos.put(codigoVehiculo, nuevoVehiculo);
 
 	}
@@ -71,19 +68,26 @@ public class Ejercito {
 	private Boolean compararTerreno(Integer codigoVehiculo, Batalla nuevaBatalla)
 			throws TerrenoNoCompatibleConElVehiculoException {
 
-		for (Entry<Integer, Vehiculo> listaDeVehiculos : listaDeVehiculos.entrySet()) {
-
-			if (listaDeVehiculos.getKey().equals(codigoVehiculo)) {
-				for (String recorridoTerreno : listaDeVehiculos.getValue().getTerrenosCompatibles()) {
-
-					if (recorridoTerreno.toLowerCase()
-							.equals(nuevaBatalla.getTipoDeBatalla().toString().toLowerCase())) {
-						System.out.println("El tipo de terreno es coincidente");
-						return true;
-					}
-				}
+		for (String recorridoTerrenos : listaDeVehiculos.get(codigoVehiculo).getTerrenosCompatibles()) {
+			if (recorridoTerrenos.toLowerCase().equals(nuevaBatalla.getTipoDeBatalla().toString().toLowerCase())) {
+				System.out.println("El tipo de terreno es coincidente");
+				return true;
 			}
 		}
+
+//		for (Entry<Integer, Vehiculo> listaDeVehiculos : listaDeVehiculos.entrySet()) {
+//
+//			if (listaDeVehiculos.getKey().equals(codigoVehiculo)) {
+//				for (String recorridoTerreno : listaDeVehiculos.getValue().getTerrenosCompatibles()) {
+//
+//					if (recorridoTerreno.toLowerCase()
+//							.equals(nuevaBatalla.getTipoDeBatalla().toString().toLowerCase())) {
+//						System.out.println("El tipo de terreno es coincidente");
+//						return true;
+//					}
+//				}
+//			}
+//		}
 		throw new TerrenoNoCompatibleConElVehiculoException(
 				"El tipo de terreno de la batalla no es compatible con el vehiculo elegido");
 	}
