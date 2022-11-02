@@ -20,33 +20,63 @@ public class testing {
 //		assertNotNull(nuevoVehiculo);
 //	}
 //	
-//	@Test
-//	public void testQueSePuedaAgregarUnVehiculoAlEjercito () {
-//		Ejercito nuevoEjercito = new Ejercito(Pais.RUSIA);
-//		Vehiculo nuevoVehiculo = new Vehiculo("T34");
-//		nuevoEjercito.agregarVehiculo(nuevoVehiculo);
-//		Integer valorEsperado = 1;
-//		Integer valorObtenido = nuevoEjercito.getListaDeVehiculos().size();
-//		assertEquals(valorEsperado,valorObtenido);
-//	}
+	@Test
+	public void testQueSePuedaAgregarUnVehiculoAlEjercito () {
+		Ejercito nuevoEjercito = new Ejercito(Pais.RUSIA);
+		Vehiculo nuevoVehiculo = new Tanque("T34");
+		try {
+			nuevoEjercito.agregarVehiculo(1, nuevoVehiculo);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		Integer valorEsperado = 1;
+		Integer valorObtenido = nuevoEjercito.getListaDeVehiculos().size();
+		assertEquals(valorEsperado,valorObtenido);
+	}
 	
-//	@Test
-//	public void testQueSeCreeUnConvoyDeCincoVehiculosEnElEjercito() {
-//		Ejercito nuevoEjercito = new Ejercito(Pais.RUSIA);
-//		Vehiculo nuevoTanqueMediano = new Vehiculo("T34");
-//		Vehiculo nuevoTanquePesado = new Vehiculo("IS-2");
-//		Vehiculo nuevoAvion = new Vehiculo ("IL-2");
-//		Vehiculo nuevoLanzamisiles = new Vehiculo ("Katiusha");
-//		Vehiculo nuevoCazatanques = new Vehiculo ("ISU-152");
-//		nuevoEjercito.agregarVehiculo(nuevoTanqueMediano);
-//		nuevoEjercito.agregarVehiculo(nuevoTanquePesado);
-//		nuevoEjercito.agregarVehiculo(nuevoAvion);
-//		nuevoEjercito.agregarVehiculo(nuevoLanzamisiles);
-//		nuevoEjercito.agregarVehiculo(nuevoCazatanques);
-//		Integer valorEsperado = 5;
-//		Integer valorObtenido = nuevoEjercito.getListaDeVehiculos().size();
-//		assertEquals(valorEsperado,valorObtenido);
-//	}
+	@Test
+	public void testQueSeCreeUnConvoyDeCincoVehiculosEnElEjercito() {
+		Ejercito nuevoEjercito = new Ejercito(Pais.RUSIA);
+		Vehiculo nuevoTanqueMediano = new Tanque("T34");
+		Vehiculo nuevoTanquePesado = new Tanque("IS-2");
+		Vehiculo nuevoAvion = new Avion ("IL-2");
+		Vehiculo nuevoLanzamisiles = new Tanque ("Katiusha");
+		Vehiculo nuevoCazatanques = new Tanque ("ISU-152");
+		try {
+			nuevoEjercito.agregarVehiculo(1,nuevoTanqueMediano);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoEjercito.agregarVehiculo(2,nuevoTanquePesado);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoEjercito.agregarVehiculo(3,nuevoAvion);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoEjercito.agregarVehiculo(4,nuevoLanzamisiles);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoEjercito.agregarVehiculo(5,nuevoCazatanques);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		Integer valorEsperado = 5;
+		Integer valorObtenido = nuevoEjercito.getListaDeVehiculos().size();
+		assertEquals(valorEsperado,valorObtenido);
+	}
 	
 	@Test
 	public void testQueExistaUnaBatalla () {
@@ -59,8 +89,18 @@ public class testing {
 		Batalla nuevaBatalla = new Batalla ("Kursk");
 		Ejercito ejercitoDefensor = new Ejercito (Pais.RUSIA);
 		Ejercito ejercitoAtacante = new Ejercito (Pais.ALEMANIA);
-		nuevaBatalla.agregarDefensor(ejercitoDefensor);
-		nuevaBatalla.agregarAtacante(ejercitoAtacante);
+		try {
+			nuevaBatalla.agregarDefensor(1,ejercitoDefensor);
+		} catch (EjercitoYaAsignadoALaDefensaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevaBatalla.agregarAtacante(1,ejercitoAtacante);
+		} catch (EjercitoYaAsignadoAlAtaqueException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 		Integer valorEsperado = 1;
 		Integer valorObtenido = nuevaBatalla.getEjercitosDefensores().size();
 		assertEquals(valorEsperado,valorObtenido);
@@ -94,12 +134,22 @@ public class testing {
 	@Test
 	public void testQueSePuedaEnviarUnVehiculoALaBatalla () {
 		Ejercito nuevoEjercito = new Ejercito (Pais.RUSIA);
-		Vehiculo nuevoTanque = new Tanque ("T34",1);
-		nuevoEjercito.agregarVehiculo(nuevoTanque);
-		Batalla nuevaBatalla = new Batalla ("Kursk",TipoDeBatalla.TERRESTRE);
-		nuevaBatalla.agregarDefensor(nuevoEjercito);
+		Vehiculo nuevoTanque = new Tanque ("T34");
 		try {
-			nuevoEjercito.enviarVehiculoALaBatalla(nuevoTanque,nuevaBatalla);
+			nuevoEjercito.agregarVehiculo(1,nuevoTanque);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		Batalla nuevaBatalla = new Batalla ("Kursk",TipoDeBatalla.TERRESTRE);
+		try {
+			nuevaBatalla.agregarDefensor(1,nuevoEjercito);
+		} catch (EjercitoYaAsignadoALaDefensaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoEjercito.enviarVehiculoALaBatalla(1,nuevaBatalla);
 		} catch (VehiculoNoEncontradoException | TerrenoNoCompatibleConElVehiculoException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
@@ -119,12 +169,22 @@ public class testing {
 	@Test
 	public void testQueNoCoincidaElVehiculoYTipoDeBatalla() {
 		Ejercito nuevoEjercito = new Ejercito (Pais.RUSIA);
-		Vehiculo nuevoAvion = new Avion ("IL-2",2);
-		nuevoEjercito.agregarVehiculo(nuevoAvion);
-		Batalla nuevaBatalla = new Batalla ("Kursk",TipoDeBatalla.TERRESTRE);
-		nuevaBatalla.agregarDefensor(nuevoEjercito);
+		Vehiculo nuevoAvion = new Avion ("IL-2");
 		try {
-			nuevoEjercito.enviarVehiculoALaBatalla(nuevoAvion,nuevaBatalla);
+			nuevoEjercito.agregarVehiculo(1,nuevoAvion);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		Batalla nuevaBatalla = new Batalla ("Kursk",TipoDeBatalla.TERRESTRE);
+		try {
+			nuevaBatalla.agregarDefensor(1,nuevoEjercito);
+		} catch (EjercitoYaAsignadoALaDefensaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoEjercito.enviarVehiculoALaBatalla(1,nuevaBatalla);
 		} catch (VehiculoNoEncontradoException | TerrenoNoCompatibleConElVehiculoException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
@@ -133,4 +193,6 @@ public class testing {
 		Integer valorObtenido = nuevoEjercito.getVehiculosEnCombate().size();
 		assertEquals(valorEsperado,valorObtenido);
 	}
+	
+	
 }

@@ -1,6 +1,7 @@
 package ar.unlam.edu.pb2;
 
 import java.util.HashSet;
+import java.util.TreeMap;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,34 +10,40 @@ import lombok.Setter;
 public class Batalla {
 
 	private String nombreBatalla;
-	private HashSet<Ejercito> ejercitosDefensores;
-	private HashSet<Ejercito> ejercitosAtacantes;
+	private TreeMap<Integer,Ejercito> ejercitosDefensores;
+	private TreeMap<Integer,Ejercito> ejercitosAtacantes;
 	private TipoDeBatalla tipoDeBatalla;
 
 	public Batalla(String nombreBatalla) {
 		// TODO Auto-generated constructor stub
 		this.nombreBatalla = nombreBatalla;
-		this.ejercitosDefensores = new HashSet<>();
-		this.ejercitosAtacantes = new HashSet<>();
+		this.ejercitosDefensores = new TreeMap<>();
+		this.ejercitosAtacantes = new TreeMap<>();
 	}
 
-	public Batalla(String string, TipoDeBatalla tipoDeBatalla) {
+	public Batalla(String nombreBatalla, TipoDeBatalla tipoDeBatalla) {
 		// TODO Auto-generated constructor stub
 		this.nombreBatalla = nombreBatalla;
-		this.ejercitosDefensores = new HashSet<>();
-		this.ejercitosAtacantes = new HashSet<>();
+		this.ejercitosDefensores = new TreeMap<>();
+		this.ejercitosAtacantes = new TreeMap<>();
 		this.tipoDeBatalla = tipoDeBatalla;
 	}
 
-	public void agregarDefensor(Ejercito ejercitoDefensor) {
+	public void agregarDefensor(Integer codigoPais, Ejercito ejercitoDefensor) throws EjercitoYaAsignadoALaDefensaException {
 		// TODO Auto-generated method stub
-		ejercitosDefensores.add(ejercitoDefensor);
+		if(ejercitosDefensores.containsKey(codigoPais)) {
+			throw new EjercitoYaAsignadoALaDefensaException ("Este ejercito ya se encuentra dentro de la lista de defensores");
+		}
+		ejercitosDefensores.put(codigoPais, ejercitoDefensor);
 		
 	}
 
-	public void agregarAtacante(Ejercito ejercitoAtacante) {
+	public void agregarAtacante(Integer codigoPais, Ejercito ejercitoAtacante) throws EjercitoYaAsignadoAlAtaqueException {
 		// TODO Auto-generated method stub
-		ejercitosAtacantes.add(ejercitoAtacante);
+		if(ejercitosAtacantes.containsKey(codigoPais)) {
+			throw new EjercitoYaAsignadoAlAtaqueException ("Este ejercito ya se encuentra dentro de la lista de atacantes");
+		}
+		ejercitosAtacantes.put(codigoPais, ejercitoAtacante);
 		
 	}
 
