@@ -6,7 +6,7 @@ public class Tanque extends Vehiculo implements Terrestre{
 
 	public Tanque(String nombreVehiculo) {
 		super(nombreVehiculo);
-		this.terrenosCompatibles = new ArrayList<>() {{add("Terrestre");add("Acuatico");}};
+		this.terrenosCompatibles = new ArrayList<>() {{add("Terrestre");}};
 	}
 
 	

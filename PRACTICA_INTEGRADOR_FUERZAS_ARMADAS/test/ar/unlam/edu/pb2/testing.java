@@ -194,5 +194,33 @@ public class testing {
 		assertEquals(valorEsperado,valorObtenido);
 	}
 	
+	@Test
+	public void testQueSePuedaCrearUnAnfibioYEnviarloAUnaBatallaAcuatica() {
+		Ejercito nuevoEjercito = new Ejercito (Pais.RUSIA);
+		Vehiculo nuevoAnfibio = new Anfibio ("T-40");
+		try {
+			nuevoEjercito.agregarVehiculo(1,nuevoAnfibio);
+		} catch (VehiculoYaExistenteEnElConvoyException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		Batalla nuevaBatalla = new Batalla ("Balaton",TipoDeBatalla.ACUATICO);
+		try {
+			nuevaBatalla.agregarDefensor(1,nuevoEjercito);
+		} catch (EjercitoYaAsignadoALaDefensaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoEjercito.enviarVehiculoALaBatalla(1,nuevaBatalla);
+		} catch (VehiculoNoEncontradoException | TerrenoNoCompatibleConElVehiculoException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		Integer valorEsperado = 1;
+		Integer valorObtenido = nuevoEjercito.getVehiculosEnCombate().size();
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
 	
 }
