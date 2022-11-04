@@ -1,5 +1,7 @@
 package ar.unlam.edu.pb2;
 
+import java.util.Objects;
+
 public class Figurita {
 
 	private Integer numeroFigurita;
@@ -55,6 +57,25 @@ public class Figurita {
 
 	public void setValorMercado(Double valorMercado) {
 		this.valorMercado = valorMercado;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(grupo, nombreJugador, numeroFigurita, paisOrigen, valorMercado);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Figurita other = (Figurita) obj;
+		return Objects.equals(grupo, other.grupo) && Objects.equals(nombreJugador, other.nombreJugador)
+				&& Objects.equals(numeroFigurita, other.numeroFigurita) && paisOrigen == other.paisOrigen
+				&& Objects.equals(valorMercado, other.valorMercado);
 	}
 	
 }

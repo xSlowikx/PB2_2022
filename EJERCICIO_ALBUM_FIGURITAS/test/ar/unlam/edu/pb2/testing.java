@@ -346,7 +346,138 @@ public class testing {
 	}
 
 	@Test
-	public void testQueSePuedaRealizarElIntercambioDeFiguritasEntreDosUsuariosFinales() {
+	public void testQueSePuedaRealizarElIntercambioDeFiguritasEntreDosUsuariosFinales()
+			throws NoSePuedeCrearElAlbumException, NoSePuedoCrearUnAdministradorException {
+
+		Album nuevoAlbum = crearAlbum();
+
+		Usuario nuevoAdministrador = crearAdministrador();
+
+		for (Figurita recorridoBombo : crearBomboDeFiguritas()) {
+			try {
+				nuevoAdministrador.agregarFigurita(recorridoBombo, nuevoAlbum);
+			} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+
+		Usuario nuevoUsuarioFinal = new UsuarioFinal("Ricardo Moyo");
+		Usuario nuevoUsuarioFinal2 = new UsuarioFinal("Roberto Petinato");
+
+		for (Figurita recorridoMazoUsuario : crearMazoDeFiguritasDelUsuarioFinal()) {
+			try {
+				nuevoUsuarioFinal.agregarFigurita(recorridoMazoUsuario, nuevoAlbum);
+			} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+
+		for (Figurita recorridoMazoUsuario : crearMazoDeFiguritasDelUsuarioFinal2()) {
+			try {
+				nuevoUsuarioFinal2.agregarFigurita(recorridoMazoUsuario, nuevoAlbum);
+			} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+
+		Figurita nuevaFigurita8 = new Figurita(4, 'C', Pais.ARGENTINA, "Huevo Acuña", 150000000.0);
+		Figurita nuevaFigurita6 = new Figurita(9, 'E', Pais.ESPAÑA, "Alvaro Morata", 45000000.0);
+
+		try {
+			nuevoUsuarioFinal.agregarFigurita(nuevaFigurita8, nuevoAlbum);
+		} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		try {
+			nuevoUsuarioFinal2.agregarFigurita(nuevaFigurita6, nuevoAlbum);
+		} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		try {
+			((UsuarioFinal) nuevoUsuarioFinal2).intercambiarFigurita(nuevoUsuarioFinal, nuevaFigurita6, nuevaFigurita8,
+					nuevoAlbum);
+		} catch (NoTenesLaFiguritaQueQueresPegarException | FiguritaYaAgregadaEnLaBaseDeDatosException
+				| FiguritaNoExistenteEnLaBaseDeDatosException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println(((UsuarioFinal) nuevoUsuarioFinal).getColeccionDeFiguritas().size());
+		System.out.println(((UsuarioFinal) nuevoUsuarioFinal2).getColeccionDeFiguritas().size());
+
+	}
+
+	@Test
+	public void testQueNoSePuedaIntercambiarUnaFiguritaDeUnUsuarioQueNoLaTenga()
+			throws NoSePuedeCrearElAlbumException, NoSePuedoCrearUnAdministradorException {
+
+		Album nuevoAlbum = crearAlbum();
+
+		Usuario nuevoAdministrador = crearAdministrador();
+
+		for (Figurita recorridoBombo : crearBomboDeFiguritas()) {
+			try {
+				nuevoAdministrador.agregarFigurita(recorridoBombo, nuevoAlbum);
+			} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+
+		Usuario nuevoUsuarioFinal = new UsuarioFinal("Ricardo Moyo");
+		Usuario nuevoUsuarioFinal2 = new UsuarioFinal("Roberto Petinato");
+
+		for (Figurita recorridoMazoUsuario : crearMazoDeFiguritasDelUsuarioFinal()) {
+			try {
+				nuevoUsuarioFinal.agregarFigurita(recorridoMazoUsuario, nuevoAlbum);
+			} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+
+		for (Figurita recorridoMazoUsuario : crearMazoDeFiguritasDelUsuarioFinal2()) {
+			try {
+				nuevoUsuarioFinal2.agregarFigurita(recorridoMazoUsuario, nuevoAlbum);
+			} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+
+		Figurita nuevaFigurita8 = new Figurita(4, 'C', Pais.ARGENTINA, "Huevo Acuña", 150000000.0);
+		Figurita nuevaFigurita6 = new Figurita(9, 'E', Pais.ESPAÑA, "Alvaro Morata", 45000000.0);
+
+		try {
+			nuevoUsuarioFinal.agregarFigurita(nuevaFigurita8, nuevoAlbum);
+		} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+//		try {
+//			nuevoUsuarioFinal2.agregarFigurita(nuevaFigurita6, nuevoAlbum);
+//		} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println(e.getMessage());
+//		}
+
+		try {
+			((UsuarioFinal) nuevoUsuarioFinal2).intercambiarFigurita(nuevoUsuarioFinal, nuevaFigurita6, nuevaFigurita8,
+					nuevoAlbum);
+		} catch (NoTenesLaFiguritaQueQueresPegarException | FiguritaYaAgregadaEnLaBaseDeDatosException
+				| FiguritaNoExistenteEnLaBaseDeDatosException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println(((UsuarioFinal) nuevoUsuarioFinal).getColeccionDeFiguritas().size());
+		System.out.println(((UsuarioFinal) nuevoUsuarioFinal2).getColeccionDeFiguritas().size());
 
 	}
 
@@ -382,6 +513,12 @@ public class testing {
 		Figurita nuevaFigurita8 = new Figurita(4, 'C', Pais.ARGENTINA, "Huevo Acuña", 150000000.0);
 		Figurita nuevaFigurita9 = new Figurita(2, 'C', Pais.ARGENTINA, "Cristian Romero", 150000000.0);
 		Figurita nuevaFigurita10 = new Figurita(10, 'C', Pais.ARGENTINA, "Lionel Messi", 150000000.0);
+		Figurita nuevaFigurita11 = new Figurita(10, 'G', Pais.BRASIL, "Neymar Jr.", 250000000.0);
+		Figurita nuevaFigurita12 = new Figurita(1, 'C', Pais.ESPAÑA, "David De Gea", 100000000.0);
+		Figurita nuevaFigurita13 = new Figurita(10, 'E', Pais.ESPAÑA, "Gavi", 120000000.0);
+		Figurita nuevaFigurita14 = new Figurita(9, 'E', Pais.ESPAÑA, "Alvaro Morata", 45000000.0);
+		Figurita nuevaFigurita15 = new Figurita(5, 'G', Pais.BRASIL, "Casemiro", 125000000.0);
+		Figurita nuevaFigurita16 = new Figurita(11, 'E', Pais.ESPAÑA, "Traore", 75000000.0);
 
 		figuritasParaAgregar.add(nuevaFigurita);
 		figuritasParaAgregar.add(nuevaFigurita2);
@@ -393,6 +530,12 @@ public class testing {
 		figuritasParaAgregar.add(nuevaFigurita8);
 		figuritasParaAgregar.add(nuevaFigurita9);
 		figuritasParaAgregar.add(nuevaFigurita10);
+		figuritasParaAgregar.add(nuevaFigurita11);
+		figuritasParaAgregar.add(nuevaFigurita12);
+		figuritasParaAgregar.add(nuevaFigurita13);
+		figuritasParaAgregar.add(nuevaFigurita14);
+		figuritasParaAgregar.add(nuevaFigurita15);
+		figuritasParaAgregar.add(nuevaFigurita16);
 
 		return figuritasParaAgregar;
 	}
@@ -418,6 +561,35 @@ public class testing {
 		figuritasParaAgregar.add(nuevaFigurita4);
 		figuritasParaAgregar.add(nuevaFigurita5);
 		figuritasParaAgregar.add(nuevaFigurita6);
+		figuritasParaAgregar.add(nuevaFigurita7);
+		figuritasParaAgregar.add(nuevaFigurita8);
+		figuritasParaAgregar.add(nuevaFigurita9);
+		figuritasParaAgregar.add(nuevaFigurita10);
+
+		return figuritasParaAgregar;
+	}
+
+	private HashSet<Figurita> crearMazoDeFiguritasDelUsuarioFinal2() {
+
+		HashSet<Figurita> figuritasParaAgregar = new HashSet<>();
+
+		Figurita nuevaFigurita = new Figurita(10, 'G', Pais.BRASIL, "Neymar Jr.", 250000000.0);
+		Figurita nuevaFigurita3 = new Figurita(1, 'C', Pais.ESPAÑA, "David De Gea", 100000000.0);
+		Figurita nuevaFigurita4 = new Figurita(10, 'E', Pais.ESPAÑA, "Gavi", 120000000.0);
+//		Figurita nuevaFigurita6 = new Figurita(9, 'E', Pais.ESPAÑA, "Alvaro Morata", 45000000.0);
+		Figurita nuevaFigurita8 = new Figurita(5, 'G', Pais.BRASIL, "Casemiro", 125000000.0);
+		Figurita nuevaFigurita9 = new Figurita(11, 'E', Pais.ESPAÑA, "Traore", 75000000.0);
+		Figurita nuevaFigurita2 = new Figurita(27, 'C', Pais.ARGENTINA, "Guido Rodriguez", 25000000.0);
+		Figurita nuevaFigurita5 = new Figurita(21, 'C', Pais.ARGENTINA, "Paulo Dybala", 150000000.0);
+		Figurita nuevaFigurita7 = new Figurita(17, 'C', Pais.ARGENTINA, "Joaquin Correa", 150000000.0);
+		Figurita nuevaFigurita10 = new Figurita(10, 'C', Pais.ARGENTINA, "Lionel Messi", 150000000.0);
+
+		figuritasParaAgregar.add(nuevaFigurita);
+		figuritasParaAgregar.add(nuevaFigurita2);
+		figuritasParaAgregar.add(nuevaFigurita3);
+		figuritasParaAgregar.add(nuevaFigurita4);
+		figuritasParaAgregar.add(nuevaFigurita5);
+//		figuritasParaAgregar.add(nuevaFigurita6);
 		figuritasParaAgregar.add(nuevaFigurita7);
 		figuritasParaAgregar.add(nuevaFigurita8);
 		figuritasParaAgregar.add(nuevaFigurita9);

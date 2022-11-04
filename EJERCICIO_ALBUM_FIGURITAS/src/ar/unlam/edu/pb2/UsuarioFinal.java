@@ -76,5 +76,20 @@ public class UsuarioFinal extends Usuario {
 			throw new FiguritaYaPegadaEnElAlbumException ("La figurita que intentas pegar ya se encuentra pegada");
 		}
 	}
+	
+	public void intercambiarFigurita(Usuario nuevoUsuarioFinal, Figurita figuritaEntregada, Figurita figuritaRecibida, Album nuevoAlbum) throws NoTenesLaFiguritaQueQueresPegarException, FiguritaYaAgregadaEnLaBaseDeDatosException, FiguritaNoExistenteEnLaBaseDeDatosException {
+		revisarSiTieneLaFiguritaEnSuMazo(figuritaEntregada);
+		quitarFiguritaDelMazo(figuritaEntregada);
+		nuevoUsuarioFinal.agregarFigurita(figuritaEntregada, nuevoAlbum);
+		((UsuarioFinal) nuevoUsuarioFinal).quitarFiguritaDelMazo(figuritaRecibida);
+		agregarFigurita(figuritaRecibida, nuevoAlbum);
+		System.out.println("Intercambio realizado con exito");
+	}
 
+	private void quitarFiguritaDelMazo(Figurita figuritaEntregada) {
+		// TODO Auto-generated method stub
+		this.coleccionDeFiguritas.remove(figuritaEntregada);
+	
+
+}
 }
