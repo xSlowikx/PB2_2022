@@ -50,7 +50,7 @@ public class UsuarioFinal extends Usuario {
 
 	}
 	
-	public void pegarFigurita(Figurita figuritaParaPegar,Album albumDestino) throws FiguritaNoExistenteEnLaBaseDeDatosException, FiguritaYaPegadaEnElAlbumException, NoTenesLaFiguritaQueQueresPegarException {
+	public void pegarFigurita(Figurita figuritaParaPegar,Album albumDestino) throws FiguritaNoExistenteEnLaBaseDeDatosException, FiguritaYaPegadaEnElAlbumException, NoTenesLaFiguritaQueQueresPegarOIntercambiarException {
 		revisarSiTieneLaFiguritaEnSuMazo(figuritaParaPegar);
 		String claveDeBusqueda = obtenerClaveDeBusqueda(figuritaParaPegar);
 		buscarFigurita(claveDeBusqueda, albumDestino);
@@ -59,14 +59,14 @@ public class UsuarioFinal extends Usuario {
 		
 	}
 
-	private Boolean revisarSiTieneLaFiguritaEnSuMazo(Figurita figuritaParaPegar) throws NoTenesLaFiguritaQueQueresPegarException {
+	private Boolean revisarSiTieneLaFiguritaEnSuMazo(Figurita figuritaParaPegar) throws NoTenesLaFiguritaQueQueresPegarOIntercambiarException {
 		// TODO Auto-generated method stub
 		for(Figurita recorridoMazo : coleccionDeFiguritas) {
 			if(recorridoMazo.getNumeroFigurita().equals(figuritaParaPegar.getNumeroFigurita())) {
 				return true;
 			}
 		}
-		throw new NoTenesLaFiguritaQueQueresPegarException("La figurita que queres pegar, no la tenes en tu mazo");
+		throw new NoTenesLaFiguritaQueQueresPegarOIntercambiarException("La figurita que queres pegar o intercambiar, no la tenes en tu mazo");
 		
 	}
 
@@ -77,14 +77,18 @@ public class UsuarioFinal extends Usuario {
 		}
 	}
 	
-	public void intercambiarFigurita(Usuario nuevoUsuarioFinal, Figurita figuritaEntregada, Figurita figuritaRecibida, Album nuevoAlbum) throws NoTenesLaFiguritaQueQueresPegarException, FiguritaYaAgregadaEnLaBaseDeDatosException, FiguritaNoExistenteEnLaBaseDeDatosException {
+	public void intercambiarFigurita(Usuario nuevoUsuarioFinal, Figurita figuritaEntregada, Figurita figuritaRecibida, Album nuevoAlbum) throws NoTenesLaFiguritaQueQueresPegarOIntercambiarException, FiguritaYaAgregadaEnLaBaseDeDatosException, FiguritaNoExistenteEnLaBaseDeDatosException, FiguritaYaPegadaEnElAlbumException {
+		revisarSiYaEstaPegada(obtenerClaveDeBusqueda(figuritaRecibida));
+		((UsuarioFinal)nuevoUsuarioFinal).revisarSiYaEstaPegada(obtenerClaveDeBusqueda(figuritaEntregada));
 		revisarSiTieneLaFiguritaEnSuMazo(figuritaEntregada);
+		((UsuarioFinal) nuevoUsuarioFinal).revisarSiTieneLaFiguritaEnSuMazo(figuritaRecibida);
 		quitarFiguritaDelMazo(figuritaEntregada);
 		nuevoUsuarioFinal.agregarFigurita(figuritaEntregada, nuevoAlbum);
 		((UsuarioFinal) nuevoUsuarioFinal).quitarFiguritaDelMazo(figuritaRecibida);
 		agregarFigurita(figuritaRecibida, nuevoAlbum);
 		System.out.println("Intercambio realizado con exito");
 	}
+
 
 	private void quitarFiguritaDelMazo(Figurita figuritaEntregada) {
 		// TODO Auto-generated method stub
