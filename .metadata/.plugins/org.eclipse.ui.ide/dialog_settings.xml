@@ -20,6 +20,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Slowik\Documents\GitHub\PB2_2022\EJERCICIO_ALBUM_FIGURITAS"/>
 			<item value="C:\Users\Slowik\Documents\GitHub\PB2_2022\PRACTICA_INTEGRADOR_FUERZAS_ARMADAS"/>
 			<item value="C:\Users\ale_e\Desktop\TestVivienda"/>
 			<item value="C:\Users\ale_e\Desktop\EjeClase"/>

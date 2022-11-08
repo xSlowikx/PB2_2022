@@ -7,5 +7,7 @@
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="ar.edu.unlam.pb2.RegistroDePropiedades"/>
     <fullyQualifiedTypeName name="ar.edu.unlam.pb2.Secretaria"/>
+    <fullyQualifiedTypeName name="java.util.TreeMap"/>
+    <fullyQualifiedTypeName name="ar.unlam.edu.pb2.EjercitoYaAsignadoALaDefensaException"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
