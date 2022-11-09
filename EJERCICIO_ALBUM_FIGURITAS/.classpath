@@ -8,6 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/lombok-1.18.24.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Slowik/eclipse/java-2022-09/eclipse/jars_externos/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

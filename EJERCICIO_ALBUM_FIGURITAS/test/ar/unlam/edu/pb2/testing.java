@@ -2,8 +2,15 @@ package ar.unlam.edu.pb2;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
@@ -480,10 +487,11 @@ public class testing {
 		System.out.println(((UsuarioFinal) nuevoUsuarioFinal2).getColeccionDeFiguritas().size());
 
 	}
-	
+
 	@Test
-	public void queNoSePuedaIntercambiarUnaFiguritaDeUnUsuarioQueYaLaHayaPegado() throws NoSePuedeCrearElAlbumException, NoSePuedoCrearUnAdministradorException {
-		
+	public void queNoSePuedaIntercambiarUnaFiguritaDeUnUsuarioQueYaLaHayaPegado()
+			throws NoSePuedeCrearElAlbumException, NoSePuedoCrearUnAdministradorException {
+
 		Album nuevoAlbum = crearAlbum();
 
 		Usuario nuevoAdministrador = crearAdministrador();
@@ -534,7 +542,7 @@ public class testing {
 			System.out.println(e.getMessage());
 		}
 		try {
-			((UsuarioFinal)nuevoUsuarioFinal).pegarFigurita(nuevaFigurita6, nuevoAlbum);
+			((UsuarioFinal) nuevoUsuarioFinal).pegarFigurita(nuevaFigurita6, nuevoAlbum);
 		} catch (FiguritaNoExistenteEnLaBaseDeDatosException | FiguritaYaPegadaEnElAlbumException
 				| NoTenesLaFiguritaQueQueresPegarOIntercambiarException e1) {
 			// TODO Auto-generated catch block
@@ -552,7 +560,44 @@ public class testing {
 		System.out.println(((UsuarioFinal) nuevoUsuarioFinal).getColeccionDeFiguritas().size());
 		System.out.println(((UsuarioFinal) nuevoUsuarioFinal2).getColeccionDeFiguritas().size());
 
-	
+	}
+
+	@Test
+	public void testequeLasFiguritasAgregadasDeFormaDesordenadaQuedenOrdenadas()
+			throws NoSePuedeCrearElAlbumException, NoSePuedoCrearUnAdministradorException {
+		Album nuevoAlbum = crearAlbum();
+
+		Usuario nuevoAdministrador = crearAdministrador();
+
+		for (Figurita recorridoBombo : crearBomboDeFiguritas()) {
+			try {
+				nuevoAdministrador.agregarFigurita(recorridoBombo, nuevoAlbum);
+			} catch (FiguritaYaAgregadaEnLaBaseDeDatosException | FiguritaNoExistenteEnLaBaseDeDatosException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+
+		System.out.println("Antes de ser ordenado:");
+
+		Set<Entry<String, Figurita>> mapaMetidoEnSet = (nuevoAlbum.getListaDeFiguritas().entrySet());
+		mapaMetidoEnSet.forEach(entradaActual -> {
+			System.out.println(entradaActual.getKey() + "\t" + entradaActual.getValue().toString());
+		});
+
+		List<Entry<String, Figurita>> setMetidoEnList = new ArrayList<>(mapaMetidoEnSet);
+		
+		Comparator<Entry<String, Figurita>> figuritasOrdenadas = new FiguritasOrdenadas();
+		
+		Collections.sort(setMetidoEnList, figuritasOrdenadas);
+		
+//		Collections.sort(setMetidoEnList);
+
+		System.out.println("Despues de ser ordenado:");
+		
+		setMetidoEnList.forEach(entradaActual -> {
+			System.out.println(entradaActual.getKey() + "\t" + entradaActual.getValue());
+		});
 	}
 
 	private Album crearAlbum() throws NoSePuedeCrearElAlbumException {
@@ -573,50 +618,50 @@ public class testing {
 
 	}
 
-	private HashSet<Figurita> crearBomboDeFiguritas() {
+	private ArrayList<Figurita> crearBomboDeFiguritas() {
 
-		HashSet<Figurita> figuritasParaAgregar = new HashSet<>();
+		ArrayList<Figurita> figuritasParaAgregar = new ArrayList<>();
 
 		Figurita nuevaFigurita = new Figurita(5, 'C', Pais.ARGENTINA, "Leandro Paredes", 45000000.0);
-		Figurita nuevaFigurita2 = new Figurita(27, 'C', Pais.ARGENTINA, "Guido Rodriguez", 25000000.0);
+		Figurita nuevaFigurita15 = new Figurita(5, 'G', Pais.BRASIL, "Casemiro", 125000000.0);
 		Figurita nuevaFigurita3 = new Figurita(9, 'C', Pais.ARGENTINA, "Lautaro Martinez", 100000000.0);
+		Figurita nuevaFigurita2 = new Figurita(27, 'C', Pais.ARGENTINA, "Guido Rodriguez", 25000000.0);
+		Figurita nuevaFigurita14 = new Figurita(9, 'E', Pais.ESPAÑA, "Alvaro Morata", 45000000.0);
 		Figurita nuevaFigurita4 = new Figurita(1, 'C', Pais.ARGENTINA, "Emiliano Martinez", 50000000.0);
 		Figurita nuevaFigurita5 = new Figurita(21, 'C', Pais.ARGENTINA, "Paulo Dybala", 150000000.0);
 		Figurita nuevaFigurita6 = new Figurita(11, 'C', Pais.ARGENTINA, "Angel Di Maria", 50000000.0);
+		Figurita nuevaFigurita11 = new Figurita(10, 'G', Pais.BRASIL, "Neymar Jr.", 250000000.0);
 		Figurita nuevaFigurita7 = new Figurita(17, 'C', Pais.ARGENTINA, "Joaquin Correa", 150000000.0);
 		Figurita nuevaFigurita8 = new Figurita(4, 'C', Pais.ARGENTINA, "Huevo Acuña", 150000000.0);
-		Figurita nuevaFigurita9 = new Figurita(2, 'C', Pais.ARGENTINA, "Cristian Romero", 150000000.0);
 		Figurita nuevaFigurita10 = new Figurita(10, 'C', Pais.ARGENTINA, "Lionel Messi", 150000000.0);
-		Figurita nuevaFigurita11 = new Figurita(10, 'G', Pais.BRASIL, "Neymar Jr.", 250000000.0);
-		Figurita nuevaFigurita12 = new Figurita(1, 'C', Pais.ESPAÑA, "David De Gea", 100000000.0);
 		Figurita nuevaFigurita13 = new Figurita(10, 'E', Pais.ESPAÑA, "Gavi", 120000000.0);
-		Figurita nuevaFigurita14 = new Figurita(9, 'E', Pais.ESPAÑA, "Alvaro Morata", 45000000.0);
-		Figurita nuevaFigurita15 = new Figurita(5, 'G', Pais.BRASIL, "Casemiro", 125000000.0);
+		Figurita nuevaFigurita9 = new Figurita(2, 'C', Pais.ARGENTINA, "Cristian Romero", 150000000.0);
+		Figurita nuevaFigurita12 = new Figurita(1, 'E', Pais.ESPAÑA, "David De Gea", 100000000.0);
 		Figurita nuevaFigurita16 = new Figurita(11, 'E', Pais.ESPAÑA, "Traore", 75000000.0);
 
-		figuritasParaAgregar.add(nuevaFigurita);
 		figuritasParaAgregar.add(nuevaFigurita2);
-		figuritasParaAgregar.add(nuevaFigurita3);
 		figuritasParaAgregar.add(nuevaFigurita4);
 		figuritasParaAgregar.add(nuevaFigurita5);
-		figuritasParaAgregar.add(nuevaFigurita6);
-		figuritasParaAgregar.add(nuevaFigurita7);
-		figuritasParaAgregar.add(nuevaFigurita8);
+		figuritasParaAgregar.add(nuevaFigurita3);
+		figuritasParaAgregar.add(nuevaFigurita);
 		figuritasParaAgregar.add(nuevaFigurita9);
-		figuritasParaAgregar.add(nuevaFigurita10);
+		figuritasParaAgregar.add(nuevaFigurita6);
+		figuritasParaAgregar.add(nuevaFigurita8);
+		figuritasParaAgregar.add(nuevaFigurita7);
 		figuritasParaAgregar.add(nuevaFigurita11);
-		figuritasParaAgregar.add(nuevaFigurita12);
 		figuritasParaAgregar.add(nuevaFigurita13);
+		figuritasParaAgregar.add(nuevaFigurita10);
+		figuritasParaAgregar.add(nuevaFigurita12);
+		figuritasParaAgregar.add(nuevaFigurita16);
 		figuritasParaAgregar.add(nuevaFigurita14);
 		figuritasParaAgregar.add(nuevaFigurita15);
-		figuritasParaAgregar.add(nuevaFigurita16);
 
 		return figuritasParaAgregar;
 	}
 
-	private HashSet<Figurita> crearMazoDeFiguritasDelUsuarioFinal() {
+	private ArrayList<Figurita> crearMazoDeFiguritasDelUsuarioFinal() {
 
-		HashSet<Figurita> figuritasParaAgregar = new HashSet<>();
+		ArrayList<Figurita> figuritasParaAgregar = new ArrayList<>();
 
 		Figurita nuevaFigurita = new Figurita(5, 'C', Pais.ARGENTINA, "Leandro Paredes", 45000000.0);
 		Figurita nuevaFigurita2 = new Figurita(27, 'C', Pais.ARGENTINA, "Guido Rodriguez", 25000000.0);
@@ -643,9 +688,9 @@ public class testing {
 		return figuritasParaAgregar;
 	}
 
-	private HashSet<Figurita> crearMazoDeFiguritasDelUsuarioFinal2() {
+	private ArrayList<Figurita> crearMazoDeFiguritasDelUsuarioFinal2() {
 
-		HashSet<Figurita> figuritasParaAgregar = new HashSet<>();
+		ArrayList<Figurita> figuritasParaAgregar = new ArrayList<>();
 
 		Figurita nuevaFigurita = new Figurita(10, 'G', Pais.BRASIL, "Neymar Jr.", 250000000.0);
 		Figurita nuevaFigurita3 = new Figurita(1, 'C', Pais.ESPAÑA, "David De Gea", 100000000.0);

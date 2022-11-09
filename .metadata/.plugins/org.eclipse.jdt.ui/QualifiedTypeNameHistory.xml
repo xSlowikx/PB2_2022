@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ar.unlam.edu.pb2.Usuario"/>
-    <fullyQualifiedTypeName name="ar.unlam.edu.pb2.Software"/>
-    <fullyQualifiedTypeName name="ar.unlam.edu.pb2.TipoDeEmpleado"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="ar.edu.unlam.pb2.RegistroDePropiedades"/>
-    <fullyQualifiedTypeName name="ar.edu.unlam.pb2.Secretaria"/>
-    <fullyQualifiedTypeName name="java.util.TreeMap"/>
-    <fullyQualifiedTypeName name="ar.unlam.edu.pb2.EjercitoYaAsignadoALaDefensaException"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.security.KeyStore.Entry"/>
+    <fullyQualifiedTypeName name="java.util.TreeSet"/>
+    <fullyQualifiedTypeName name="ar.unlam.edu.pb2.FiguritasOrdenadas"/>
+    <fullyQualifiedTypeName name="java.util.Comparator"/>
+    <fullyQualifiedTypeName name="org.junit.Test"/>
+    <fullyQualifiedTypeName name="ar.edu.unlam.pb2.dominio.ordenarPorKeyDescendente"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.util.Map.Entry"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
+    <fullyQualifiedTypeName name="ar.edu.unlam.pb2.dominio.ordenarMapaPorValoresDeFigura"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
 </qualifiedTypeNameHistroy>

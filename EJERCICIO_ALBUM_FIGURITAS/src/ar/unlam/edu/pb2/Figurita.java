@@ -1,8 +1,9 @@
 package ar.unlam.edu.pb2;
 
+import java.util.Map.Entry;
 import java.util.Objects;
 
-public class Figurita {
+public class Figurita implements Comparable<Figurita>{
 
 	private Integer numeroFigurita;
 	private Character grupo;
@@ -76,6 +77,25 @@ public class Figurita {
 		return Objects.equals(grupo, other.grupo) && Objects.equals(nombreJugador, other.nombreJugador)
 				&& Objects.equals(numeroFigurita, other.numeroFigurita) && paisOrigen == other.paisOrigen
 				&& Objects.equals(valorMercado, other.valorMercado);
+	}
+
+	@Override
+	public String toString() {
+		return "Figurita [numeroFigurita=" + numeroFigurita + ", grupo=" + grupo + ", paisOrigen=" + paisOrigen
+				+ ", nombreJugador=" + nombreJugador + ", valorMercado=" + valorMercado + "]";
+	}
+
+	@Override
+	public int compareTo(Figurita o) {
+		// TODO Auto-generated method stub
+		int ordenador = this.getGrupo().compareTo(o.getGrupo());
+		if( ordenador == 0) {
+			ordenador = this.getPaisOrigen().compareTo(o.getPaisOrigen());
+			if(ordenador == 0) {
+				ordenador = this.getNumeroFigurita().compareTo(o.getNumeroFigurita());
+			}
+		}
+		return ordenador;
 	}
 	
 }
