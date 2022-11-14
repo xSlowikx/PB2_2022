@@ -17,9 +17,9 @@ public class Empleado implements Serializable, Comparable<Empleado>{
 	private Integer codigoEmpleado;
 	private String nombreEmpleado;
 	private Area areaEstablecida;
-	private LocalDate fechaDeRegistro;
+	private String fechaDeRegistro;
 
-	public Empleado(Integer codigoEmpleado, String nombreEmpleado, Area areaEstablecida, LocalDate fechaDeRegistro) {
+	public Empleado(Integer codigoEmpleado, String nombreEmpleado, Area areaEstablecida, String fechaDeRegistro) {
 		// TODO Auto-generated constructor stub
 		this.codigoEmpleado = codigoEmpleado;
 		this.nombreEmpleado = nombreEmpleado;

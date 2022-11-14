@@ -10,7 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.time.LocalDate;
 import java.util.Collections;
 
 import org.junit.Test;
@@ -43,6 +42,7 @@ public class testing {
 
 	@Test
 	public void testQueSePuedaAgregarUnRegistroDeEmpleadoDeMantenimientoALaCarpetaCorrespondiente() {
+
 		Fichero ficheroCentral = new Fichero("EMPLEADOS");
 		Carpeta nuevaCarpeta = new Carpeta(Area.MANTENIMIENTO);
 
@@ -53,8 +53,7 @@ public class testing {
 			System.out.println(e.getMessage());
 		}
 
-		Empleado nuevoEmpleadoMantenimiento = new Empleado(5150, "Ernesto Guevara", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
+		Empleado nuevoEmpleadoMantenimiento = new Empleado(5150, "Ernesto Guevara", Area.MANTENIMIENTO, "25/03/2022");
 		try {
 			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento, nuevaCarpeta);
 		} catch (CarpetaDelAreaEspecificadaNoEncontradaException e) {
@@ -87,16 +86,11 @@ public class testing {
 			System.out.println(e.getMessage());
 		}
 
-		Empleado nuevoEmpleadoMantenimiento = new Empleado(5150, "Ernesto Guevara", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento2 = new Empleado(2340, "Pedro Rueda", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento3 = new Empleado(2241, "Jorge Evaris", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento4 = new Empleado(6984, "Miguel Aranda", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento5 = new Empleado(6195, "Gonzales Smith", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
+		Empleado nuevoEmpleadoMantenimiento = new Empleado(5150, "Ernesto Guevara", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento2 = new Empleado(2340, "Pedro Rueda", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento3 = new Empleado(2241, "Jorge Evaris", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento4 = new Empleado(6984, "Miguel Aranda", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento5 = new Empleado(6195, "Gonzales Smith", Area.MANTENIMIENTO, "25/03/2022");
 
 		try {
 			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento, nuevaCarpeta);
@@ -138,7 +132,7 @@ public class testing {
 
 		try {
 			archivoContenedor = new FileOutputStream(
-					"C:\\Users\\Slowik\\Desktop\\Programacion Basica II\\archivoDestino.txt");
+					"C:\\Users\\ale_e\\Desktop\\Programacion Basica II\\archivoDestino.txt");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
@@ -191,7 +185,7 @@ public class testing {
 
 		try {
 			archivoRecibido = new FileInputStream(
-					"C:\\Users\\Slowik\\Desktop\\Programacion Basica II\\archivoDestino.txt");
+					"C:\\Users\\ale_e\\Desktop\\Programacion Basica II\\archivoDestino.txt");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
@@ -228,7 +222,7 @@ public class testing {
 	}
 
 	@Test
-	public void testQueSePuedaSerializarYDeserealizarConGson() {
+	public void testQueSePuedaSerializarConGson() {
 
 		Fichero ficheroCentral = new Fichero("EMPLEADOS");
 		Carpeta nuevaCarpeta = new Carpeta(Area.MANTENIMIENTO);
@@ -240,16 +234,11 @@ public class testing {
 			System.out.println(e.getMessage());
 		}
 
-		Empleado nuevoEmpleadoMantenimiento = new Empleado(5150, "Ernesto Guevara", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento2 = new Empleado(2340, "Pedro Rueda", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento3 = new Empleado(2241, "Jorge Evaris", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento4 = new Empleado(6984, "Miguel Aranda", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
-		Empleado nuevoEmpleadoMantenimiento5 = new Empleado(6195, "Gonzales Smith", Area.MANTENIMIENTO,
-				LocalDate.of(2022, 3, 25));
+		Empleado nuevoEmpleadoMantenimiento = new Empleado(5150, "Ernesto Guevara", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento2 = new Empleado(2340, "Pedro Rueda", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento3 = new Empleado(2241, "Jorge Evaris", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento4 = new Empleado(6984, "Miguel Aranda", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento5 = new Empleado(6195, "Gonzales Smith", Area.MANTENIMIENTO, "25/03/2022");
 
 		try {
 			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento, nuevaCarpeta);
@@ -287,6 +276,7 @@ public class testing {
 		}
 
 		Gson nuevoGson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+
 		String jSonRecibido = nuevoGson.toJson(ficheroCentral);
 
 		System.out.println(jSonRecibido);
@@ -307,27 +297,90 @@ public class testing {
 			}
 
 		}
+	}
 
-		FileWriter nuevoFileWriter = null;
+	@Test
+	public void testQueSePuedaSerializarConGsonAUnArchivo() {
+
+		Fichero ficheroCentral = new Fichero("EMPLEADOS");
+		Carpeta nuevaCarpeta = new Carpeta(Area.MANTENIMIENTO);
 
 		try {
-			nuevoFileWriter = new FileWriter(
-					"C:\\Users\\Slowik\\Desktop\\Programacion Basica II\\archivoDestinoJsonPrueba.txt");
-			nuevoGson.toJson(ficheroCentral, nuevoFileWriter);
-			nuevoFileWriter.close();
-		} catch (IOException e) {
+			ficheroCentral.agregarNuevaCarpeta(nuevaCarpeta);
+		} catch (CarpetaYaColocadaEnElFicheroException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
 
-		FileReader nuevoFileReader = null;
-		Fichero objetoFicheroLeidoDeLTxt = null;
+		Empleado nuevoEmpleadoMantenimiento = new Empleado(5150, "Ernesto Guevara", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento2 = new Empleado(2340, "Pedro Rueda", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento3 = new Empleado(2241, "Jorge Evaris", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento4 = new Empleado(6984, "Miguel Aranda", Area.MANTENIMIENTO, "25/03/2022");
+		Empleado nuevoEmpleadoMantenimiento5 = new Empleado(6195, "Gonzales Smith", Area.MANTENIMIENTO, "25/03/2022");
+
+		try {
+			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento, nuevaCarpeta);
+		} catch (CarpetaDelAreaEspecificadaNoEncontradaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		try {
+			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento2, nuevaCarpeta);
+		} catch (CarpetaDelAreaEspecificadaNoEncontradaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		try {
+			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento3, nuevaCarpeta);
+		} catch (CarpetaDelAreaEspecificadaNoEncontradaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		try {
+			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento4, nuevaCarpeta);
+		} catch (CarpetaDelAreaEspecificadaNoEncontradaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		try {
+			ficheroCentral.agregarNuevoRegistroDeEmpleado(nuevoEmpleadoMantenimiento5, nuevaCarpeta);
+		} catch (CarpetaDelAreaEspecificadaNoEncontradaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+
+		Gson nuevoGson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+		FileWriter archivoDestino;
+
+		try {
+
+			archivoDestino = new FileWriter(
+					"C:\\Users\\ale_e\\Desktop\\Programacion Basica II\\archivoDestinoJsonPrueba.txt");
+			nuevoGson.toJson(ficheroCentral, archivoDestino);
+			archivoDestino.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@Test
+	public void testQueSePuedaDeserealizarJsonDesdeUnArchivoOrigen() {
+
+		Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+		FileReader nuevoFileReader;
+		Fichero objetoFicheroLeidoDeLTxt;
 
 		try {
 			nuevoFileReader = new FileReader(
-					"C:\\Users\\Slowik\\Desktop\\Programacion Basica II\\archivoDestinoJsonPrueba.txt");
+					"C:\\Users\\ale_e\\Desktop\\Programacion Basica II\\archivoDestinoJsonPrueba.txt");
 
-			objetoFicheroLeidoDeLTxt = nuevoGson.fromJson(nuevoFileReader, Fichero.class);
+			objetoFicheroLeidoDeLTxt = gson.fromJson(nuevoFileReader, Fichero.class);
 
 			System.out.println("\n" + objetoFicheroLeidoDeLTxt);
 
