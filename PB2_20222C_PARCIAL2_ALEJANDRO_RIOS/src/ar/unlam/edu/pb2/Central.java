@@ -59,11 +59,12 @@ public class Central {
 				"El usuario que buscas no se encuentra registrado en la central");
 	}
 
-	public void corroborarSiElUsuarioEsPermitido(Usuario administrador, Usuario usuarioEncontrado) throws EsteUsuarioNoTieneLosPermisosNecesariosParaAgregarUnSensorException {
+	public Boolean corroborarSiElUsuarioEsPermitido(Usuario usuarioEncontrado) throws EsteUsuarioNoTieneLosPermisosNecesariosParaAgregarUnSensorException {
 		// TODO Auto-generated method stub
-		if(!(administrador instanceof Usuario) | !(usuarioEncontrado instanceof Usuario)) {
-			throw new EsteUsuarioNoTieneLosPermisosNecesariosParaAgregarUnSensorException("No posees los permisos necesarios para agregar sensores");
+		if(listaDeUsuarios.contains(usuarioEncontrado)) {
+			return true;
 		}
+		throw new EsteUsuarioNoTieneLosPermisosNecesariosParaAgregarUnSensorException("No posees los permisos necesarios para agregar sensores");
 	}
 
 }

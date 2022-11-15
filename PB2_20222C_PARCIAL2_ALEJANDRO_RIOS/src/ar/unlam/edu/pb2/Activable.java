@@ -9,5 +9,5 @@ public interface Activable {
 	 * “ACTIVACION” o “DESACTIVACION” según corresponda.
 	 */
 
-	public void activarDesactivarAlarma(Alarma alarmaRecibida, String codigoActivacionAlarma, Central centralOperante);
+	public Boolean activarDesactivarAlarma(Alarma alarmaRecibida, String codigoActivacionAlarma, Central centralOperante) throws LaAlarmaNoSeEncuentraAgregadaEnLaCentralException, EsteUsuarioNoTieneLosPermisosNecesariosParaAgregarUnSensorException, CodigoActivacionAlarmaIncorrectoException, HayAlmenosUnoDeLosSensoresApagadosException;
 }

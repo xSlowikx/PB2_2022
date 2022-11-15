@@ -26,14 +26,19 @@ public class testing {
 		Alarma alarmaDeHumo = new Alarma(1, "1234", "9999", "Detector de Humo X25");
 		Usuario nuevoConfigurador = new Configurador(55548879, "Hernesto");
 
-		((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		try {
+			((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		} catch (UsuarioYaExistenteEnLaCentralException e2) {
+			// TODO Auto-generated catch block
+			System.out.println(e2.getMessage());
+		}
 		;
 		((Administrador) nuevoAdministrador).registrarAlarma(alarmaDeHumo, centralOperante);
 
 		try {
 			((Administrador) nuevoAdministrador).agregarUsuarioAUnaAlarma(55548879, 1, "9999", centralOperante);
 		} catch (ElUsuarioNoSeEncuentraAgregadoEnLaCentralException | LaAlarmaNoSeEncuentraAgregadaEnLaCentralException
-				| CodigoAlarmaIncorrectoException e) {
+				| CodigoAlarmaIncorrectoException | ElUsuarioYaSeEncuentraValidadoEnLaAlarmaException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
@@ -58,14 +63,19 @@ public class testing {
 		Alarma alarmaDeHumo = new Alarma(1, "1234", "9999", "Detector de Humo X25");
 		Usuario nuevoConfigurador = new Configurador(55548879, "Hernesto");
 
-		((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		try {
+			((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		} catch (UsuarioYaExistenteEnLaCentralException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 		;
 		((Administrador) nuevoAdministrador).registrarAlarma(alarmaDeHumo, centralOperante);
 
 		try {
 			((Administrador) nuevoAdministrador).agregarUsuarioAUnaAlarma(55548879, 1, "123555", centralOperante);
 		} catch (ElUsuarioNoSeEncuentraAgregadoEnLaCentralException
-				| LaAlarmaNoSeEncuentraAgregadaEnLaCentralException e) {
+				| LaAlarmaNoSeEncuentraAgregadaEnLaCentralException | ElUsuarioYaSeEncuentraValidadoEnLaAlarmaException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
@@ -93,7 +103,12 @@ public class testing {
 		Sensor sensorTemperatura = new Sensor(1);
 //		Sensor sensorTemperatura2 = new Sensor(1,false);
 
-		((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		try {
+			((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		} catch (UsuarioYaExistenteEnLaCentralException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 		;
 		((Administrador) nuevoAdministrador).registrarAlarma(alarmaDeHumo, centralOperante);
 
@@ -126,7 +141,12 @@ public class testing {
 		Sensor sensorTemperatura = new Sensor (1);
 		Sensor sensorHumedad = new Sensor (2);
 		
-		((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		try {
+			((Administrador) nuevoAdministrador).agregarUsuarioEnLaCentral(nuevoConfigurador, centralOperante);
+		} catch (UsuarioYaExistenteEnLaCentralException e1) {
+			// TODO Auto-generated catch block
+			System.out.println(e1.getMessage());
+		}
 		;
 		((Administrador) nuevoAdministrador).registrarAlarma(alarmaDeHumo, centralOperante);
 		
@@ -146,7 +166,7 @@ public class testing {
 		}
 		try {
 			((Administrador)nuevoAdministrador).activarDesactivarAlarma(1,"1234",nuevoConfigurador,centralOperante);
-		} catch (LaAlarmaNoSeEncuentraAgregadaEnLaCentralException | CodigoActivacionAlarmaIncorrectoException e) {
+		} catch (LaAlarmaNoSeEncuentraAgregadaEnLaCentralException | CodigoActivacionAlarmaIncorrectoException | EsteUsuarioNoTieneLosPermisosNecesariosParaAgregarUnSensorException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}

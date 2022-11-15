@@ -10,6 +10,7 @@ public class Alarma {
 	private String codigoAd;
 	private String codigoConf;
 	private String nombreAlarma;
+	private Boolean estadoAlarma;
 	private List<Usuario> listaDeUsuariosValidos;
 	private List<Accion> listaDeAccionesRealizadas;
 	private List<Sensor> listaDeSensores;
@@ -20,9 +21,18 @@ public class Alarma {
 		this.codigoAd = codigoAD;
 		this.codigoConf = codigoConf;
 		this.nombreAlarma = nombreAlarma;
+		this.estadoAlarma = false;
 		this.listaDeUsuariosValidos = new ArrayList<>();
 		this.listaDeSensores = new ArrayList<>();
 		this.listaDeAccionesRealizadas = new ArrayList<>();
+	}
+
+	public Boolean getEstadoAlarma() {
+		return estadoAlarma;
+	}
+
+	public void setEstadoAlarma(Boolean estadoAlarma) {
+		this.estadoAlarma = estadoAlarma;
 	}
 
 	public Integer getIdAlarma() {
@@ -75,8 +85,11 @@ public class Alarma {
 				&& Objects.equals(idAlarma, other.idAlarma) && Objects.equals(nombreAlarma, other.nombreAlarma);
 	}
 
-	public Boolean agregarUsuario(Usuario usuarioEncontrado) {
+	public Boolean agregarUsuario(Usuario usuarioEncontrado) throws ElUsuarioYaSeEncuentraValidadoEnLaAlarmaException {
 		// TODO Auto-generated method stub
+		if(listaDeUsuariosValidos.contains(usuarioEncontrado)) {
+			throw new ElUsuarioYaSeEncuentraValidadoEnLaAlarmaException ("El usuario que intentas agregar a la alarma ya se encuentra habilitado");
+		}
 		return this.listaDeUsuariosValidos.add(usuarioEncontrado);
 
 	}
@@ -111,6 +124,16 @@ public class Alarma {
 			throw new SensorDuplicadoException ("El sensor que estas intentando agregar, ya se encuentra en la lista de sensores de la alarma");
 		}
 		this.listaDeSensores.add(sensorRecibido);
+	}
+
+	public Sensor buscarSensorPorId(Integer idSensor) throws SensorNoEncontradoException {
+		// TODO Auto-generated method stub
+		for(Sensor recorridoSensores : listaDeSensores) {
+			if(recorridoSensores.getNumeroSensor().equals(idSensor)) {
+				return recorridoSensores;
+			}
+		}
+		throw new SensorNoEncontradoException ("El id de sensor que estas buscando es inexistente, pruebe nuevamente");
 	}
 
 }

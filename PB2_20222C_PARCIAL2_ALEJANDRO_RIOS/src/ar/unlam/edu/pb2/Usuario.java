@@ -2,7 +2,7 @@ package ar.unlam.edu.pb2;
 
 import java.util.Objects;
 
-public class Usuario {
+public class Usuario implements Comparable<Usuario>{
 
 	private Integer dniUsuario;
 	private String nombreUsuario;
@@ -47,6 +47,13 @@ public class Usuario {
 			return false;
 		Usuario other = (Usuario) obj;
 		return Objects.equals(dniUsuario, other.dniUsuario) && Objects.equals(nombreUsuario, other.nombreUsuario);
+	}
+
+
+	@Override
+	public int compareTo(Usuario o) {
+		// TODO Auto-generated method stub
+		return this.dniUsuario.compareTo(o.getDniUsuario());
 	}
 
 	

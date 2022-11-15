@@ -20,11 +20,11 @@ public interface Configurable {
 	 * ● Activar un sensor de alarma indicando: ○ Identificador del sensor. ○
 	 * Identificador de la alarma . ○ Código de configuración de la alarma.
 	 */
-	public void agregarUsuarioAUnaAlarma(Integer dniUsuarioAgregado, Integer idAlarma, String codConfiguracionAlarma, Central centralOperante) throws ElUsuarioNoSeEncuentraAgregadoEnLaCentralException, LaAlarmaNoSeEncuentraAgregadaEnLaCentralException, CodigoAlarmaIncorrectoException;
+	public void agregarUsuarioAUnaAlarma(Integer dniUsuarioAgregado, Integer idAlarma, String codConfiguracionAlarma, Central centralOperante) throws ElUsuarioNoSeEncuentraAgregadoEnLaCentralException, LaAlarmaNoSeEncuentraAgregadaEnLaCentralException, CodigoAlarmaIncorrectoException, ElUsuarioYaSeEncuentraValidadoEnLaAlarmaException;
 	
 	public void agregarSensorAUnaAlarma(Integer idAlarma, String codConfiguracionAlarma, Sensor sensorRecibido, Central centralOperante) throws LaAlarmaNoSeEncuentraAgregadaEnLaCentralException, ElUsuarioNoSeEncuentraAgregadoEnLaCentralException, CodigoAlarmaIncorrectoException, EsteUsuarioNoTieneLosPermisosNecesariosParaAgregarUnSensorException, SensorDuplicadoException;
 	
-	public void activarSensorDeUnaAlarma(Integer numeroSensor, Integer idAlarma, String codConfiguracionAlarma, Central centralOperante) throws LaAlarmaYaSeEncuentraActivadaException, LaAlarmaNoSeEncuentraAgregadaEnLaCentralException, ElUsuarioNoSeEncuentraAgregadoEnLaCentralException;
+	public Boolean activarSensorDeUnaAlarma(Integer numeroSensor, Integer idAlarma, String codConfiguracionAlarma, Central centralOperante) throws LaAlarmaYaSeEncuentraActivadaException, LaAlarmaNoSeEncuentraAgregadaEnLaCentralException, ElUsuarioNoSeEncuentraAgregadoEnLaCentralException, CodigoAlarmaIncorrectoException, SensorNoEncontradoException;
 	
 	public void agregarAccionALaListaDeAccionesDeLaAlarma(Integer idAlarma, Central centralOperante);
 }
