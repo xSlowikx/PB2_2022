@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/gson-2.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/jackson-annotations-2.14.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/jackson-core-2.14.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/jackson-databind-2.14.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/jackson-dataformat-xml-2.14.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/lombok-1.18.24.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/stax2-api-4.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ale_e/eclipse/java-2022-06/eclipse/jars_externos/woodstox-core-6.4.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
