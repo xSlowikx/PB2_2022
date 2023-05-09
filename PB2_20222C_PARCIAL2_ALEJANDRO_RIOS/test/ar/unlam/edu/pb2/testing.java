@@ -7,6 +7,12 @@ import org.junit.Test;
 public class testing {
 
 	@Test
+	public void testQueSePuedaCrearUnPato() {
+		Pato nuevoPato = new Pato("Pato Lucas");
+		assertNotNull(nuevoPato);
+	}
+	
+	@Test
 	public void testQueSePuedaRegistrarUnaAlarmaEnLaCentral() {
 		Central centralOperante = new Central("Monitor");
 		Usuario nuevoAdministrador = new Administrador(41823462, "Jorge");
